@@ -12,7 +12,6 @@ function Controller($scope) {
   $scope.msgColor = "red";
 
   $scope.btnClicked=function(){
-    // var splitedArr=$scope.dishesListModel.split(",");
     var len=countItems($scope.dishesListModel);
     setMessage(len);
     setColor(len);
