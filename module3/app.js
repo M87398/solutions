@@ -12,6 +12,7 @@ function FoundItemsDirective() {
     templateUrl: 'foundItems.html',
     scope: {
       found: '<',
+      empty: '<',
       onRemove: '&'
     },
     controller: NarrowItDownController,
@@ -25,20 +26,30 @@ function FoundItemsDirective() {
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var menu = this;
-  // menu.txtToSearch = "";
+  menu.empty=false;
   menu.found = [];
 
 menu.removeItem = function (itemIndex) {
     menu.found.splice(itemIndex, 1);
+     menu.setEmpty();
 };
 menu.search = function(txtToSearch){
+
   var promise = MenuSearchService.getMatchedMenuItems(menu.txtToSearch);
     promise.then(function (response){
        menu.found=response.data.found;
+       menu.setEmpty();
     })
     .catch(function error(){
       console.log(error);
     })
+}
+menu.setEmpty= function(){
+  if(menu.found.length ===0){
+    menu.empty=true;
+  }else{
+    menu.empty=false;
+  }
 }
 }
 
@@ -71,7 +82,6 @@ function MenuSearchService($http, ApiBasePath) {
       method: "GET",
       url: (ApiBasePath + "/menu_items.json"),
     });
-
     return response;
   };
 
