@@ -26,7 +26,6 @@ service.getItems = function () {
 
     return $http.get(" https://davids-restaurant.herokuapp.com/menu_items.json?category="+ item["short_name"])
     .then(function (response) {
-      console.log("list:", response);
       return response.data;
     });
   };

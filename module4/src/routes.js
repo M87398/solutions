@@ -24,31 +24,15 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     url: '/categories',
     templateUrl: 'src/shoppinglist/templates/categories.template.html',
     controller: 'CategoriesController as categoriesList',
-    // resolve: {
-    //   items: ['MenuDataService', function (MenuDataService) {
-    //     return MenuDataService.getItems();
-    //   }]
-    // }
   })
 
   .state('items', {
-    url: '/items',
+    url: '/items?itemId',
     templateUrl: 'src/shoppinglist/templates/items.template.html',
     controller: 'ItemsController as itemsList',
     params:{
       itemId: null
     }
-    // resolve: {
-    //   item: ['$stateParams', 'MenuDataService',
-    //         function ($stateParams, MenuDataService) {
-    //           return MenuDataService.getItems()
-    //             .then(function (items) {
-    //               console.log("idx: ", $stateParams.itemId);
-    //               console.log("items: ", items[$stateParams.itemId]);
-    //               return items[$stateParams.itemId];
-    //             });
-    //         }]
-    // }
   });
 }
 
