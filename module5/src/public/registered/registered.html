@@ -1,0 +1,35 @@
+<div class="container">
+  <h2 id="menu-categories-title" class="text-center">My Info</h2>
+<!-- <div class="" ng-if="ctrl.registerd==null">
+  Registerd Object is null
+</div> -->
+<div ng-if="ctrl.registerd">
+    <div>
+      First name: {{ctrl.registerd.firstname}}
+    </div>
+    <div>
+      Last name: {{ctrl.registerd.lastname}}
+    </div>
+    <div>
+      Email: {{ctrl.registerd.email}}
+    </div>
+    <div>
+      Phone: {{ctrl.registerd.phone}}
+    </div>
+<br>
+    <div class="">
+      Name: {{ctrl.registerd.response.name}}
+    </div>
+    <div class="">
+      Description: {{ctrl.registerd.response.description}}
+    </div>
+    <div class="menu-item-photo">
+      <div>{{ctrl.registerd.response["short_name"]}}</div>
+      <img class="img-responsive" width="250" height="150" ng-src="https://maciejbcourse5.herokuapp.com/images/{{ctrl.registerd.response.short_name}}.jpg" alt="{{ctrl.registerd.response.short_name}}">
+    </div>
+</div>
+<div ng-if="ctrl.registerd==null">
+  Not Signed Up Yet.
+  <a ui-sref="public.signup">Sign up Now</a>
+</div>
+</div>
